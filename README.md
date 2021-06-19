@@ -1,6 +1,6 @@
 # Destructor
 
-Bulk object destructor for simplifying cleanup tasks.
+Bulk object destructor for simplifying cleanup tasks. Supports functions, instances, and connections.
 
 ## API
 
@@ -10,16 +10,16 @@ Creates a new object.
 
 #### `Destructor:add(item)`
 
-Adds an item to be destructed on the next call to `destroy`.
-An error is thrown if the object type is not supported. See below for supported object types.
+Adds an item to be finalized on the next call to `destroy`.
+Throws an error if the object's type is unsupported.
 
 #### `Destructor:destroy()`
 
-Destroys objects that have been added and clears the buffer.
-The actual finalizers are defined for different types as follows:
+Finalizes items that have been added and removes all items from the Destructor.
+The finalizers are defined for various types as follows:
 - `Function`: Calls the function.
-- `Instance`: Calls :Destroy() on the instance.
-- `RBXScriptConnection`: Calls :Disconnect() on the connection.
+- `Instance`: Calls :Destroy() on the object.
+- `RBXScriptConnection`: Calls :Disconnect() on the object.
 
 ## Example
 
