@@ -22,6 +22,11 @@ function Destructor:add(item)
 	return item
 end
 
+function Destructor:remove(item)
+	self[item] = nil
+	return item
+end
+
 function Destructor:destroy()
 	for item, finalizer in pairs(self) do
 		finalizer(item)
