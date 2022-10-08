@@ -26,7 +26,7 @@ function Destructor:remove(item)
 end
 
 function Destructor:destroy()
-	for item, finalizer in pairs(self) do
+	for item, finalizer in self do
 		finalizer(item)
 	end
 	table.clear(self)
