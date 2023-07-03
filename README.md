@@ -1,6 +1,6 @@
 # Destructor
 
-Bulk object destructor for simplifying cleanup tasks. Supports functions, instances, and connections.
+Bulk object destructor for simplifying cleanup tasks. Supports functions, instances, threads, and connections.
 
 ## API
 
