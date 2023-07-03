@@ -2,6 +2,7 @@ local Destructor = {}
 Destructor.__index = Destructor
 
 local finalizers = setmetatable({
+	["thread"] = task.cancel,
 	["function"] = task.spawn,
 	["Instance"] = game.Destroy,
 	["RBXScriptConnection"] = Instance.new("BindableEvent").Event:Connect(function() end).Disconnect,
