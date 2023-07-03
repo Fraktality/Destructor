@@ -18,6 +18,7 @@ Throws an error if the object's type is unsupported.
 Finalizes items that have been added and removes all items from the Destructor.
 The finalizers are defined for various types as follows:
 - `Function`: Calls the function.
+- `Thread`: Cancels the thread via task.cancel.
 - `Instance`: Calls :Destroy() on the object.
 - `RBXScriptConnection`: Calls :Disconnect() on the object.
 
