@@ -1,17 +1,18 @@
 # Destructor
 
-Bulk object destructor for simplifying cleanup tasks. Supports functions, instances, threads, and connections.
+A simple and elegant pattern for cleaning up objects and tasks, in under 40 lines of code.
 
 ## API
 
 #### `Destructor.new()`
 
-Creates a new object.
+Creates a new destructor.
 
 #### `Destructor:add(item)`
 
 Adds an item to be finalized on the next call to `destroy`.
 Throws an error if the object's type is unsupported.
+Returns the item.
 
 #### `Destructor:destroy()`
 
@@ -25,28 +26,26 @@ The finalizers are defined for various types as follows:
 ## Example
 
 ```lua
--- Creation:
 local dtor = Destructor.new()
 
-
--- Functions:
+-- Functions
 dtor:add(function()
-    print("Foo")
+    print("destroying")
 end)
-dtor:destroy() -- > Foo
 
+-- Instances
+local part = dtor:add(Instance.new("Part", workspace))
 
--- Instances:
-local newPart = Instance.new("Part", workspace)
-dtor:add(newPart)
-wait(1)
-dtor:destroy() -- newPart is :Destroy()ed
-
-
--- Connections:
+-- Connections
 dtor:add(RunService.Stepped:Connect(function()
-    print("Bar") -- Starts printing "Bar" every frame
+    print("foo")
 end))
-wait(1)
-dtor:destroy() -- Stops printing "Bar" every frame
+
+-- Threads
+dtor:add(task.spawn(function()
+    while true do
+        print("bar")
+        task.wait()
+    end
+end))
 ```
