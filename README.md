@@ -1,6 +1,6 @@
 # Destructor
 
-A simple and elegant pattern for cleaning up objects and tasks, in under 40 lines of code.
+A simple pattern for cleaning up objects and tasks, in under 36 lines of code.
 
 ## API
 
