@@ -22,6 +22,7 @@ The finalizers are defined for various types as follows:
 - `Thread`: Cancels the thread via task.cancel.
 - `Instance`: Calls :Destroy().
 - `RBXScriptConnection`: Calls :Disconnect().
+- `table`: Calls Destroy, destroy, Disconnect, or DisconnnectAll (i.e. other Destructors, Maids, and custom signal implementations)
 
 ## Example
 
